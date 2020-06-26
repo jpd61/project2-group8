@@ -25,12 +25,7 @@ User.init(
           type: DataTypes.STRING,
           allowNull: false
         },
-        // I used twitter and github on my challenge - thought it was a easy tie in that was kind of neat...
         twitter: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        github: {
             type: DataTypes.STRING,
             allowNull: true
         },
