@@ -20,7 +20,7 @@ module.exports = {
     },
     // Run API through to test if it is empty (finish function)
     format_isEmpty: (obj) => {
-        if _.isEmpty(obj) {
+        if (_.isEmpty(obj)) {
             return err
         }
     }
