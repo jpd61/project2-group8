@@ -6,6 +6,7 @@ fetch(req)
     return whiskeyResponse.json();
 })
 .then((whiskeyResponse) => {
+    // for loop?
     console.log(response);
 })
 })
