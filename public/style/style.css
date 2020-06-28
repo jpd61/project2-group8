@@ -8,9 +8,9 @@ header {
 main {
     background-color: #49111C;
 }
-main span {
+/* main span {
     color: #F2F4F3;
-}
+} */
 
 .hero {
     max-height: 300px;
