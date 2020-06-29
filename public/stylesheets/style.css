@@ -1,0 +1,29 @@
+
+body {
+    background-color: #F2F4F3;
+}
+header {
+    text-align: center;
+}
+main {
+    background-color: #49111C;
+}
+/* main span {
+    color: #F2F4F3;
+} */
+
+.hero {
+    max-height: 300px;
+    overflow: hidden;
+}
+.hero img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    transform: translateY(-60%);
+    position: relative;
+}
+
+footer {
+    text-align: center; 
+}
