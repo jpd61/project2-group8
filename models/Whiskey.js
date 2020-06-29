@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const { truncate } = require('./User');
 
 // create our Post model
 class Whiskey extends Model {}
@@ -23,6 +24,22 @@ Whiskey.init(
         type: DataTypes.TEXT,
         allowNull: true
       },
+      bottle_size: {
+          type: DataTypes.TEXT,
+          allowNull: truncate
+      },
+      price_paid: {
+          type: DataTypes.FLOAT,
+          allowNull: true
+      },
+      resell_value: {
+          type: DataTypes.FLOAT,
+          alllowNull: true
+      },
+      resell_url: {
+          type: DataTypes.TEXT,
+          allowNull: true
+      },
       user_id: {
         type: DataTypes.INTEGER,
         references: {
@@ -35,7 +52,7 @@ Whiskey.init(
       sequelize,
       freezeTableName: true,
       underscored: true,
-      modelName: 'post'
+      modelName: 'whiskey'
     }
   );
 
