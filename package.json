@@ -33,5 +33,8 @@
   },
   "devDependencies": {
     "mocha": "^8.0.1"
+  },
+  "directories": {
+    "test": "test"
   }
 }
