@@ -1,11 +1,34 @@
 const router = require('express').Router();
-const { User, Whiskey } = require('../../models');
+const { User, Whiskey, Comment } = require('../../models');
 // (Is there a lodash helper to replace withAuth?)
 const withAuth = require('../../utils/auth');
 
 // GET /api/users 
 router.get('/', (req, res) => {
     Whiskey.findAll({
+        attributes: [
+            'id',
+            'name',
+            'type',
+            'bottle_size',
+            'price_paid',
+            'resell_value',
+            'resell_url'
+          ],
+          include: [
+            {
+              model: Comment,
+              attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+              include: {
+                model: User,
+                attributes: ['username', 'twitter']
+              }
+            },
+            {
+              model: User,
+              attributes: ['username', 'twitter']
+            },
+          ]
     })
       .then(dbWhiskeyData => res.json(dbWhiskeyData))
       .catch(err => {
@@ -20,17 +43,26 @@ router.get('/:id', (req, res) => {
         where: {
           id: req.params.id
         },
+        attributes: [
+            'id',
+            'name',
+            'type',
+            'bottle_size',
+            'price_paid',
+            'resell_value',
+            'resell_url'
+          ],
         include: [
             {
-              model: Whiskey,
-              attributes: ['id', 'name', 'type', 'bottle_size', 'price_paid', 'resell_value', 'resell_url']
-            },
+                model: User,
+                attributes: ['username', 'twitter']
+              },
             {
                 model: Comment,
                 attributes: ['id', 'comment_text', 'created_at'],
                 include: {
-                  model: Whiskey,
-                  attributes: ['name']
+                  model: User,
+                  attributes: ['username', 'twitter']
                 }
             }
           ]

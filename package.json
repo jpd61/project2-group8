@@ -32,6 +32,7 @@
     "sequelize": "^5.21.13"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "mocha": "^8.0.1"
   }
 }
