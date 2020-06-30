@@ -59,6 +59,14 @@ router.get('/login', (req, res) => {
     res.render('signup');
   });
 
+  router.get('/whiskey', (req, res) => {
+    res.render('whiskey');
+  });
+
+  router.get('/browse', (req, res) => {
+    res.render('browse');
+  });
+
   router.get('/whiskey/:id', (req, res) => {
     Whiskey.findOne({
       where: {

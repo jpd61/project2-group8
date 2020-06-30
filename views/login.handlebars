@@ -16,21 +16,23 @@
                         <div class="tab-content" id="myTabContent">
                             <!-- Login tab -->
                             <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                                <form action="login">
+                                <form action="login" class="login-form">
                                     <label for="username">Username</label><br>
-                                    <input type="text" name="username" id="username"><br>
+                                    <input type="text" name="username" id="username-login"><br>
                                     <label for="password">Password</label><br>
-                                    <input type="text" name="password" id="password"><br>
+                                    <input type="text" name="password" id="password-login"><br>
                                     <button class="btn btn-primary mt-3" type="submit">Login</button>
                                 </form>
                             </div>
                             <!-- Signup tab -->
                             <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
-                                <form action="signup">
+                                <form action="signup" class="signup-form">
                                     <label for="username">Username</label><br>
-                                    <input type="text" name="username" id="username"><br>
+                                    <input type="text" name="username" id="username-signup"><br>
+                                    <label for="username">E-mail</label><br>
+                                    <input type="text" name="username" id="email-signup"><br>
                                     <label for="password">Password</label><br>  
-                                    <input type="text" name="password" id="password"><br>
+                                    <input type="text" name="password" id="password-signup"><br>
 
                                     <label for="ageVerify">Are you over 21?</label><br>
                                     <input type="radio" name="ageYes" id="ageYes" value="yes"> Yes<br>
@@ -43,3 +45,6 @@
                 </div> 
             </div>
         </div>
+
+<script src="/javascript/login.js"></script>
+<script src="/javascript/signup.js"></script>

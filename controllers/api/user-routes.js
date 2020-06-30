@@ -55,14 +55,13 @@ router.post('/', (req, res) => {
     User.create({
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password,
-      twitter: req.body.twitter
+      password: req.body.password
     })
     .then(dbUserData => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
-        req.session.twitter = dbUserData.twitter;
+        req.session.email = dbUserData.email;
         req.session.loggedIn = true;
     
         res.json(dbUserData);
@@ -74,11 +73,11 @@ router.post('/', (req, res) => {
 router.post('/login', (req, res) => {
     User.findOne({
       where: {
-        email: req.body.email
+        username: req.body.username
       }
     }).then(dbUserData => {
       if (!dbUserData) {
-        res.status(400).json({ message: 'No user with that email address!' });
+        res.status(400).json({ message: 'No user with that user name!' });
         return;
       }
   
@@ -90,9 +89,8 @@ router.post('/login', (req, res) => {
       }
       req.session.save(() => {
         // declare session variables
-        req.session.user_id = dbUserData.id;
+        req.session.id = dbUserData.id;
         req.session.username = dbUserData.username;
-        req.session.twitter = dbUserData.twitter;
         req.session.loggedIn = true;
   
         res.json({ user: dbUserData, message: 'You are now logged in!' });
