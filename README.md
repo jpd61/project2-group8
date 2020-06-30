@@ -30,7 +30,7 @@
 
 🔍 A whiskey app....
   
-![technically speaking: a tech blog](./assets/whiskey-coder.jpg)
+![whiskey app](./assets/whiskey-coder.jpg)
 
 ## User Story
 
@@ -51,7 +51,7 @@ PLACEHOLDER
 
 `npm install`
 
-Dependencies: express, express-handlebars, express-session, mysql2, sequelize, [nodemon](https://www.npmjs.com/package/nodemon), dotenv, connect-session-sequelize, bcrypt, [mocha](https://mochajs.org/), [lodash](https://www.npmjs.com/package/lodash), [request](https://www.npmjs.com/package/request)
+Dependencies: express, express-handlebars, express-session, mysql2, sequelize, [nodemon](https://www.npmjs.com/package/nodemon), dotenv, connect-session-sequelize, bcrypt, [mocha](https://mochajs.org/), chai, [lodash](https://www.npmjs.com/package/lodash), [request](https://www.npmjs.com/package/request)
   
 ## Usage
 💻   
