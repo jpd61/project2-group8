@@ -6,7 +6,6 @@ const withAuth = require('../../utils/auth');
 // GET /api/users 
 router.get('/', (req, res) => {
     Whiskey.findAll({
-        attributes: { exclude: ['password'] }
     })
       .then(dbWhiskeyData => res.json(dbWhiskeyData))
       .catch(err => {
@@ -18,24 +17,23 @@ router.get('/', (req, res) => {
 // GET /api/users/1
 router.get('/:id', (req, res) => {
     Whiskey.findOne({
-        // attributes: { exclude: ['password']},
         where: {
           id: req.params.id
         },
-        // include: [
-        //     {
-        //       model: Post,
-        //       attributes: ['id', 'title', 'post_content', 'created_at']
-        //     },
-        //     {
-        //         model: Comment,
-        //         attributes: ['id', 'comment_text', 'created_at'],
-        //         include: {
-        //           model: Post,
-        //           attributes: ['title']
-        //         }
-        //     }
-        //   ]
+        include: [
+            {
+              model: Whiskey,
+              attributes: ['id', 'name', 'type', 'bottle_size', 'price_paid', 'resell_value', 'resell_url']
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'created_at'],
+                include: {
+                  model: Whiskey,
+                  attributes: ['name']
+                }
+            }
+          ]
 
     })
       .then(dbWhiskeyData => {
