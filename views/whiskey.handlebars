@@ -1,0 +1,58 @@
+<form class="new-whiskey">
+        <div>
+            <label for="whiskey">Choose your whiskey from the list:</label>
+            <input list="whiskeys" name="whiskey" id="whiskey">
+            {{!-- will pull from API to fill with #each --}}
+            <datalist id="whiskeys">
+                <option value="Jack Daniels">
+                <option value="Crown Royal">
+                <option value="Garrison Brothers">
+                <option value="Buffalo Trace">
+                <option value="Redemption Rye">
+            </datalist>
+        </div>
+        <div>
+            <label for="size">Select a bottle size:</label>
+            <input list="sizes" name="size" id="size">
+            {{!-- Current bottle sizes, leave this hardcoded --}}
+            <datalist id="sizes">
+                <option value="1.75 liters">
+                <option value="1 liter">
+                <option value="750 milliliters">
+                <option value="375 milliliters">
+                <option value="200 milliliters">
+                <option value="100 milliliters">
+                <option value="50 milliliters">
+            </datalist>
+        </div>
+        <div>
+            <label for="tasting-note">Choose your tasting notes from the list:</label>
+            <input list="tasting-notes" name="tasting-note" id="tasting-note">
+            {{!-- can leave this here and pull notes from table and/or replace with API results --}}
+            <datalist id="tasting-notes">
+                <option value="Orange">
+                <option value="leather">
+                <option value="coffee">
+                <option value="spice">
+                <option value="vanilla">
+            </datalist>
+        </div>
+        <div>
+            <label for="retail-price">What is the retail price of the whiskey?</label>
+            <input type="number" id="retail-price" />
+        </div>
+        <div>
+            <p>Do you want to list a resale value for your whiskey?</p>
+            <input type="radio" id="Yes" name="resale-choice" value="yes">
+            <label for="yes">Yes</label><br>
+            <input type="radio" id="no" name="resale-choice" value="no">
+            <label for="no">No</label><br>
+        </div>
+        <div>
+            <label for="resale-price">What is the resale price of the whiskey?</label>
+            <input type="number" id="resale-price" />
+
+            <label for="resale-reference">Reference for resale value of the whiskey:</label>
+            <input type="url" id="resale-reference" />
+        </div>
+    </form>
