@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { User, Whiskey } = require('../../models');
-// (Is there a lodash helper to replace withAuth?)
 const withAuth = require('../../utils/auth');
 
 // GET /api/users 
@@ -89,7 +88,6 @@ router.post('/login', (req, res) => {
         res.status(400).json({ message: 'Incorrect password!' });
         return;
       }
-  
       req.session.save(() => {
         // declare session variables
         req.session.user_id = dbUserData.id;
