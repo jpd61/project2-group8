@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const { truncate } = require('./User');
 
 // create our Post model
 class Whiskey extends Model {}
@@ -15,7 +14,7 @@ Whiskey.init(
         autoIncrement: true
       },
       // We talked about limiting the number of preselected...will need to work in to code
-      name: {
+      title: {
         type: DataTypes.STRING,
         allowNull: false
       },
@@ -23,22 +22,6 @@ Whiskey.init(
       type: {
         type: DataTypes.TEXT,
         allowNull: true
-      },
-      bottle_size: {
-          type: DataTypes.TEXT,
-          allowNull: truncate
-      },
-      price_paid: {
-          type: DataTypes.FLOAT,
-          allowNull: true
-      },
-      resell_value: {
-          type: DataTypes.FLOAT,
-          alllowNull: true
-      },
-      resell_url: {
-          type: DataTypes.TEXT,
-          allowNull: true
       },
       user_id: {
         type: DataTypes.INTEGER,
@@ -52,7 +35,7 @@ Whiskey.init(
       sequelize,
       freezeTableName: true,
       underscored: true,
-      modelName: 'whiskey'
+      modelName: 'post'
     }
   );
 
