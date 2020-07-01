@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Whiskey, Comment, Vote } = require('../../models');
-// (Is there a lodash helper to replace withAuth?)
+const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
 // GET /api/users 
@@ -94,17 +94,15 @@ router.post('/', (req, res) => {
       price_paid: req.body.price_paid,
       resell_value: req.body.resell_value,
       resell_url: req.body.resell_url,
-      comments: req.body.comments
+      comments: req.body.comments,
+      user_id: req.session.user_id
     })
-    .then(dbWhiskeyData => {
-      req.session.save(() => {
-        req.session.user_id = dbWhiskeyData.user_id;
-        req.session.loggedIn = true;
-    
-        res.json(dbWhiskeyData);
+    .then(dbWhiskeyData => res.json(dbWhiskeyData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
       });
     });
-});
 
 router.put('/upvote', withAuth, (req, res) => {
     // make sure the session exists first

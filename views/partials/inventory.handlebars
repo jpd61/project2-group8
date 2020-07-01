@@ -1,9 +1,9 @@
-<ol class="container ">
+
                 <li class="row justify-content-center m-3">
                     <div class="col-md-9">
                         <div class="card">
                             <div class="card-header">
-                                <span class="col-3 ">{{name}}</span>
+                                <span class="col-3 inv-head"><i class="fas fa-glass-whiskey"></i>  {{name}}</span>
                                 <span class="col-1">{{vote_count}} {{format_plural "point" vote_count}}</span>
                                 <!-- this button not showing -->
                                 {{#if loggedIn}}
@@ -19,6 +19,6 @@
                             </div>
                         </div>
                     </div>
-                </li></ol>
+                </li>
 
 <script src="/javascript/upvote.js"></script>

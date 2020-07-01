@@ -1,4 +1,4 @@
-<h1 align="center">Whiskey App (placeholder) 👋</h1>
+<h1 align="center">Whiskey Inventory 👋</h1>
   
 <p align="center">
     <img src="https://img.shields.io/github/repo-size/jpd61/project2-group8" />
