@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <title>Whiskey Inventory</title>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active navbar-brand font-weight-bold" href="#">Whiskey Inventory</a>
+            </div>
+            <div class="navbar-nav ml-auto">
+                <a class="nav-item nav-link" href="#">Home</a>
+                <a class="nav-item nav-link" href="#">Browse</a>
+                <a class="nav-item nav-link" href="#">Login</a>
+            </div>        
+        </nav>   
+    </header>
+
+    <!-- Hero -->
+    <div class="hero">
+        <img src="../images/hero_crop.jpg" class="img-fluid max-width: 100% height: auto" alt="">
+    </div>
+
+    <!-- Main -->
+    <main class="p-3">
+        <div class="row justify-content-center">
+            <div class="col-5">
+                <div class="card">
+                    <div class="card-header"> 
+                        <ul class="nav nav-tabs card-header-tabs pull-right"  id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="signup-tab" data-toggle="tab" href="#signup" role="tab" aria-controls="signup" aria-selected="false">Sign Up</a>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div class="card-body">
+                        <div class="tab-content" id="myTabContent">
+                            <!-- Login tab -->
+                            <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                                <form action="login">
+                                    <label for="username">Username</label><br>
+                                    <input type="text" name="username" id="username"><br>
+                                    <label for="password">Password</label><br>
+                                    <input type="text" name="password" id="password"><br>
+                                    <button class="btn btn-primary mt-3" type="submit">Login</button>
+                                </form>
+                            </div>
+                            <!-- Signup tab -->
+                            <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+                                <form action="signup">
+                                    <label for="username">Username</label><br>
+                                    <input type="text" name="username" id="username"><br>
+                                    <label for="password">Password</label><br>  
+                                    <input type="text" name="password" id="password"><br>
+
+                                    <label for="ageVerify">Are you over 21?</label><br>
+                                    <input type="radio" name="ageYes" id="ageYes" value="yes"> Yes<br>
+                                    <input type="radio" name="ageNo" id="ageNo" value="no"> No<br>
+                                    <button class="btn btn-primary mt-3" type="submit">Sign Up</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>  
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <h3>Whiskey Inventory</h3>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

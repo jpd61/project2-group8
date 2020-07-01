@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    /* background-color: #; */
+    height: 100vh;
+
+}
+header {
+    text-align: center;
+}
+nav {
+    background-color: #edeadd;
+}
+main {
+    background-color: #49111C;
+    display: block;
+    overflow: auto;
+    /* padding: 0 0 15px 0; */
+    /* height: auto; */
+    /* width: 100%; */
+}
+footer {
+    background-color: #edeadd;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 10vh;
+    text-align: center;
+}
+footer h3 {
+    top: 50%
+}
