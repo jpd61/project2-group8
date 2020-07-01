@@ -101,10 +101,14 @@
             </div>
             <!-- List -->
             <ol class="container ">
+            {{#if whiskeys.length}}
             {{#each whiskeys as |whiskey|}}
             {{>inventory-cards}}
             {{/each}}
             </ol>
+            {{else}}
+            <h6 class="pb-4 has-text-centered is-italic">you do not currently have any whiskeys!</h6>
+            {{/if}}
         </div>
     </main>
 
