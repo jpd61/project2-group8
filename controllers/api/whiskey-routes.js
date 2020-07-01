@@ -85,11 +85,16 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     Whiskey.create({
       name: req.body.name,
-      type: req.body.type
+      type: req.body.type,
+      bottle_size: req.body.bottle_size,
+      price_paid: req.body.price_paid,
+      resell_value: req.body.resell_value,
+      resell_url: req.body.resell_url,
+      comments: req.body.comments
     })
     .then(dbWhiskeyData => {
       req.session.save(() => {
-        req.session.user_id = dbUserData.id;
+        req.session.user_id = dbWhiskeyData.user_id;
         req.session.loggedIn = true;
     
         res.json(dbWhiskeyData);

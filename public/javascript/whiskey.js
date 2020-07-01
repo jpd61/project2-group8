@@ -1,13 +1,18 @@
-async function newFormHandler(event) {
+async function newWhiskeyHandler(event) {
     event.preventDefault();
   
-    const name = document.querySelector('#whiskey').value;
+    const name = document.querySelector('#whiskey').value.trim();
+    const bottle_size = document.querySelector('#size').value.trim();
+    const price_paid = document.querySelector('#retail-price').value.trim();
+    const resell_value = document.querySelector('#resale-price').value.trim();
   
     const response = await fetch(`/api/whiskey`, {
       method: 'POST',
       body: JSON.stringify({
         name,
-        post_content
+        bottle_size,
+        price_paid,
+        resell_value
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -15,10 +20,10 @@ async function newFormHandler(event) {
     });
   
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/dashboard');
     } else {
       alert(response.statusText);
     }
   }
   
-  document.querySelector('.new-whiskey').addEventListener('submit', newFormHandler);
+  document.querySelector('.new-whiskey').addEventListener('submit', newWhiskeyHandler);
