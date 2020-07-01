@@ -20,7 +20,7 @@ async function newWhiskeyHandler(event) {
     });
   
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/inventory');
     } else {
       alert(response.statusText);
     }

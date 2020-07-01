@@ -3,7 +3,31 @@ const sequelize = require('../config/connection');
 const { truncate } = require('./User');
 
 // create our Post model
-class Whiskey extends Model {}
+class Whiskey extends Model {
+    static upvote(body, models) {
+        return models.Vote.create({
+          user_id: body.user_id,
+          whiskey_id: body.whiskey_id
+        }).then(() => {
+          return Whiskey.findOne({
+            where: {
+              id: body.whiskey_id
+            },
+            attributes: [
+                'id',
+                'name',
+                'type',
+                'bottle_size',
+                'price_paid',
+                'resell_value',
+                'resell_url',
+                'user_id',
+                [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
+            ]
+          });
+        });
+      }
+    }
 
 // create fields/columns for Post model
 Whiskey.init(

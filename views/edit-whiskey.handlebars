@@ -1,0 +1,35 @@
+<article>
+  <a href="/dashboard"> &larr; Back to dashboard</a>
+  <h2>
+    Edit Whiskey
+  </h2>
+  <form class="edit-whiskey-form">
+    <div>
+      <input name="whiskey-title" type="text" value="{{whiskey.title}}" />
+      <span>({{format_url whiskey.whiskey_url}})</span>
+    </div>
+    <div>
+      {{whiskey.vote_count}} {{format_plural "point" whiskey.vote_count}} by you on {{format_date whiskey.created_at}}
+      |
+      <a href="/whiskey/{{whiskey.id}}">{{whiskey.comments.length}} {{format_plural "comment" whiskey.comments.length}}</a>
+    </div>
+    <button type="submit">Save whiskey</button>
+    <button type="button" class="delete-whiskey-btn">Delete whiskey</button>
+  </form>
+</article>
+
+<form class="comment-form">
+  <div>
+    <textarea name="comment-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">add comment</button>
+  </div>
+</form>
+
+{{> comments whiskey.comments}}
+
+<script src="/javascript/edit-whiskey.js"></script>
+<script src="/javascript/delete-whiskey.js"></script>
+<script src="/javascript/comment.js"></script>

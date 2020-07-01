@@ -4,7 +4,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <span class="col-3 ">{{user.username}}</span>
-                                <span class="col-1">Rating</span>
+                                <span class="col-1">{{vote_count}} {{format_plural "vote" vote_count}}</span>
                             </div>
                             <div class="card-body">
                                 <img id="whiskey-pic" class="rounded" src="/images/{{name}}.jpg" alt="{{name}}">

@@ -1,13 +1,14 @@
-
-                <li class="row justify-content-center m-3">
+                <li class="whiskey row justify-content-center m-3">
                     <div class="col-md-9">
                         <div class="card">
                             <div class="card-header">
-                                <span class="col-3 inv-head"><i class="fas fa-glass-whiskey"></i>  {{name}}</span>
-                                <span class="col-1">{{vote_count}} {{format_plural "point" vote_count}}</span>
+                                <span class="col-3 inv-head"><a href="/whiskey/{{id}}"><i class="fas fa-glass-whiskey"></i>  {{name}}</a></span>
+                                <span class="col-1">{{vote_count}} {{format_plural "vote" vote_count}}</span>
                                 <!-- this button not showing -->
                                 {{#if loggedIn}}
+                                <span class="col-3">
                                 <button type="button" class="btn btn-secondary upvote-btn">upvote</button>
+                                </span>
                                 {{/if}}
                             </div>
                             <div class="card-body">
@@ -20,5 +21,6 @@
                         </div>
                     </div>
                 </li>
+
 
 <script src="/javascript/upvote.js"></script>

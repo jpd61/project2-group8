@@ -13,7 +13,9 @@ router.get('/', (req, res) => {
         'bottle_size',
         'price_paid',
         'resell_value',
-        'resell_url'
+        'resell_url',
+        'user_id',
+        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
       ],
       include: [
         {
@@ -62,13 +64,15 @@ router.get('/login', (req, res) => {
   router.get('/whiskey', (req, res) => {
     Whiskey.findAll({
         attributes: [
-          'id',
-          'name',
-          'type',
-          'bottle_size',
-          'price_paid',
-          'resell_value',
-          'resell_url'
+            'id',
+            'name',
+            'type',
+            'bottle_size',
+            'price_paid',
+            'resell_value',
+            'resell_url',
+            'user_id',
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
         ],
         include: [
           {
@@ -139,7 +143,7 @@ router.get('/login', (req, res) => {
         });
   });
 
-  router.get('/dashboard', (req, res) => {
+  router.get('/inventory', (req, res) => {
     Whiskey.findAll({
         attributes: [
           'id',
@@ -169,7 +173,7 @@ router.get('/login', (req, res) => {
       })
         .then(dbWhiskeyData => {
           const whiskeys = dbWhiskeyData.map(whiskey => whiskey.get({ plain: true }));
-          res.render('dashboard', {
+          res.render('inventory', {
               whiskeys,
               loggedIn: req.session.loggedIn
             });
