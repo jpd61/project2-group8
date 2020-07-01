@@ -21,12 +21,12 @@ router.get('/', (req, res) => {
           attributes: ['id', 'comment_text', 'whiskey_id', 'user_id', 'created_at'],
           include: {
             model: User,
-            attributes: ['username', 'twitter']
+            attributes: ['username']
           }
         },
         {
           model: User,
-          attributes: ['username', 'twitter']
+          attributes: ['username']
         }
       ]
     })
@@ -60,11 +60,120 @@ router.get('/login', (req, res) => {
   });
 
   router.get('/whiskey', (req, res) => {
-    res.render('whiskey');
+    Whiskey.findAll({
+        attributes: [
+          'id',
+          'name',
+          'type',
+          'bottle_size',
+          'price_paid',
+          'resell_value',
+          'resell_url'
+        ],
+        include: [
+          {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'whiskey_id', 'user_id', 'created_at'],
+            include: {
+              model: User,
+              attributes: ['username']
+            }
+          },
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
+      })
+        .then(dbWhiskeyData => {
+          const whiskeys = dbWhiskeyData.map(whiskey => whiskey.get({ plain: true }));
+          res.render('whiskey', {
+              whiskeys,
+              loggedIn: req.session.loggedIn
+            });
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
   });
 
   router.get('/browse', (req, res) => {
-    res.render('browse');
+    Whiskey.findAll({
+        attributes: [
+          'id',
+          'name',
+          'type',
+          'bottle_size',
+          'price_paid',
+          'resell_value',
+          'resell_url'
+        ],
+        include: [
+          {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'whiskey_id', 'user_id', 'created_at'],
+            include: {
+              model: User,
+              attributes: ['username']
+            }
+          },
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
+      })
+        .then(dbWhiskeyData => {
+          const whiskeys = dbWhiskeyData.map(whiskey => whiskey.get({ plain: true }));
+          res.render('browse', {
+              whiskeys,
+              loggedIn: req.session.loggedIn
+            });
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+  });
+
+  router.get('/dashboard', (req, res) => {
+    Whiskey.findAll({
+        attributes: [
+          'id',
+          'name',
+          'type',
+          'bottle_size',
+          'price_paid',
+          'resell_value',
+          'resell_url'
+        ],
+        include: [
+          {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'whiskey_id', 'user_id', 'created_at'],
+            include: {
+              model: User,
+              attributes: ['username']
+            }
+          },
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
+      })
+        .then(dbWhiskeyData => {
+          const whiskeys = dbWhiskeyData.map(whiskey => whiskey.get({ plain: true }));
+          res.render('dashboard', {
+              whiskeys,
+              loggedIn: req.session.loggedIn
+            });
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
   });
 
   router.get('/whiskey/:id', (req, res) => {
@@ -87,12 +196,12 @@ router.get('/login', (req, res) => {
           attributes: ['id', 'comment_text', 'whiskey_id', 'user_id', 'created_at'],
           include: {
             model: User,
-            attributes: ['username', 'twitter']
+            attributes: ['username']
           }
         },
         {
           model: User,
-          attributes: ['username', 'twitter']
+          attributes: ['username']
         }
       ]
     })

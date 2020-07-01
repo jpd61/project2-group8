@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <title>Whiskey Inventory</title>
 </head>
 <body>
@@ -16,10 +17,13 @@
               <div class="navbar-nav">
                 <a class="nav-item nav-link" href="/">Home</a>
                 <a class="nav-item nav-link" href="/browse">Browse</a>
+                
                 {{#if loggedIn}}
-                <a id="logout" class="nav-item nav-link">Logout</a>
+                    <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
+                    <a class="nav-item nav-link" href="/whiskey">Create</a>
+                    <a id="logout" class="nav-item nav-link">Logout</a>
                 {{else}}
-                <a class="nav-item nav-link" href="/login">Login</a>
+                    <a class="nav-item nav-link" href="/login">Login</a>
                 {{/if}}
               </div>
             </div>
@@ -38,7 +42,7 @@
 
     <!-- Footer -->
     <footer>
-        <h3>Whiskey Inventory</h3>
+        {{>footer}}
     </footer>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

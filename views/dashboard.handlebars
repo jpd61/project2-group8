@@ -1,36 +1,107 @@
-<div class="container">
-            <div class="d-flex justify-content-between align-items-center p-3">
+<main class="">
+        <div class="container">
+            <div class="d-flex justify-content-around align-items-center p-3">
                 <h2 class="text-light">My List</h2>
-                <button class="btn btn-primary">Add +</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Add +
+                </button>                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add A Whiskey</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Form goes here -->
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- Sort Button -->
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Sort
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Name</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">Rating: Highest to Lowest</a>
+                        <a class="dropdown-item" href="#">Rating: Lowest to Highest</a>
                     </div>
                 </div>
             </div>
-            <ol class="container">
-                <li class="row align-items-center justify-content-center">
-                    <img class="rounded" src="http://placehold.jp/150x150.png" alt="Featured 4">
-                    <span class="col-3 ">Name</span>
-                    <span class="col-1">Rating</span>
-                    <span class="col-3">Notes</span>
+            <!-- List -->
+            <ol class="container ">
+                <li class="row justify-content-center m-3">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="col-3 ">Name</span>
+                                <span class="col-1">Rating</span>
+                            </div>
+                            <div class="card-body">
+                                <img class="rounded" src="http://placehold.jp/150x150.png" alt="Featured 4">
+                                <span class="col-3">Notes</span>
+                            </div>
+                        </div>
+                    </div>
                 </li>
-                <li class="row align-items-center justify-content-center">
-                    <img class="rounded" src="http://placehold.jp/150x150.png" alt="Featured 4">
-                    <span class="col-3 ">Name</span>
-                    <span class="col-1">Rating</span>
-                    <span class="col-3">Notes</span>
+                <li class="row justify-content-center m-3">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="col-3 ">Name</span>
+                                <span class="col-1">Rating</span>
+                            </div>
+                            <div class="card-body">
+                                <img class="rounded" src="http://placehold.jp/150x150.png" alt="Featured 4">
+                                <span class="col-3">Notes</span>
+                            </div>
+                        </div>
+                    </div>
                 </li>
-                <li class="row align-items-center justify-content-center">
-                    <img class="rounded" src="http://placehold.jp/150x150.png" alt="Featured 4">
-                    <span class="col-3 ">Name</span>
-                    <span class="col-1">Rating</span>
-                    <span class="col-3">Notes</span>
+                <li class="row justify-content-center m-3">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="col-3 ">Name</span>
+                                <span class="col-1">Rating</span>
+                            </div>
+                            <div class="card-body">
+                                <img class="rounded" src="http://placehold.jp/150x150.png" alt="Featured 4">
+                                <span class="col-3">Notes</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="row justify-content-center m-3">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="col-3 ">Name</span>
+                                <span class="col-1">Rating</span>
+                            </div>
+                            <div class="card-body">
+                                <img class="rounded" src="http://placehold.jp/150x150.png" alt="Featured 4">
+                                <span class="col-3">Notes</span>
+                            </div>
+                        </div>
+                    </div>
                 </li>
             </ol>
         </div>
+    </main>
+
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
