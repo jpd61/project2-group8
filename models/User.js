@@ -25,10 +25,6 @@ User.init(
           type: DataTypes.STRING,
           allowNull: false
         },
-        twitter: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
         // define an email column
         email: {
           type: DataTypes.STRING,
