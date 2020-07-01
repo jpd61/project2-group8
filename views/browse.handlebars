@@ -18,63 +18,8 @@
                 </div>
             </div>
             <!-- List -->
-            <ol class="container ">
-                <li class="row justify-content-center m-3">
-                    <div class="col-md-9">
-                        <div class="card">
-                            <div class="card-header">
-                                <span class="col-3 ">Name</span>
-                                <span class="col-1">Rating</span>
-                            </div>
-                            <div class="card-body">
-                                <img class="rounded" src="http://placehold.jp/150x150.png" alt="Featured 4">
-                                <span class="col-3">Notes</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="row justify-content-center m-3">
-                    <div class="col-md-9">
-                        <div class="card">
-                            <div class="card-header">
-                                <span class="col-3 ">Name</span>
-                                <span class="col-1">Rating</span>
-                            </div>
-                            <div class="card-body">
-                                <img class="rounded" src="http://placehold.jp/150x150.png" alt="Featured 4">
-                                <span class="col-3">Notes</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="row justify-content-center m-3">
-                    <div class="col-md-9">
-                        <div class="card">
-                            <div class="card-header">
-                                <span class="col-3 ">Name</span>
-                                <span class="col-1">Rating</span>
-                            </div>
-                            <div class="card-body">
-                                <img class="rounded" src="http://placehold.jp/150x150.png" alt="Featured 4">
-                                <span class="col-3">Notes</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="row justify-content-center m-3">
-                    <div class="col-md-9">
-                        <div class="card">
-                            <div class="card-header">
-                                <span class="col-3 ">Name</span>
-                                <span class="col-1">Rating</span>
-                            </div>
-                            <div class="card-body">
-                                <img class="rounded" src="http://placehold.jp/150x150.png" alt="Featured 4">
-                                <span class="col-3">Notes</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ol>
+            {{#each whiskeys as |whiskey|}}
+            {{>browser}}
+            {{/each}}
         </div>
     </main>

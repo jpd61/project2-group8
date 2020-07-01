@@ -1,0 +1,24 @@
+<ol class="container ">
+                <li class="row justify-content-center m-3">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="col-3 ">{{name}}</span>
+                                <span class="col-1">{{vote_count}} {{format_plural "point" vote_count}}</span>
+                                <!-- this button not showing -->
+                                {{#if loggedIn}}
+                                <button type="button" class="btn btn-secondary upvote-btn">upvote</button>
+                                {{/if}}
+                            </div>
+                            <div class="card-body">
+                                <img id="whiskey-pic" class="rounded" src="/images/{{name}}.jpg" alt="{{name}}">
+                                <span class="col-3">Bottle Size: {{bottle_size}}</span>
+                                <span class="col-3">Price Paid: ${{price_paid}}</span>
+                                <span class="col-3">Resell Value: ${{resell_value}}</span>
+                                <span class="col-3">Notes</span>
+                            </div>
+                        </div>
+                    </div>
+                </li></ol>
+
+<script src="/javascript/upvote.js"></script>

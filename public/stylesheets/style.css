@@ -1,6 +1,6 @@
-body {
+/* body {
     background-color: #;
-}
+} */
 header {
     text-align: center;
 }
@@ -10,4 +10,10 @@ main {
 }
 footer {
     text-align: center; 
+}
+
+/* added by DeWoody */
+#whiskey-pic {
+    width: 200px;
+    height: 300px;
 }

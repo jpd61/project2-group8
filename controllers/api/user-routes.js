@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Whiskey } = require('../../models');
+const { User, Whiskey, Vote } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // GET /api/users 
@@ -33,7 +33,13 @@ router.get('/:id', (req, res) => {
                   model: Whiskey,
                   attributes: ['name']
                 }
-            }
+            },
+            {
+                model: Whiskey,
+                attributes: ['title'],
+                through: Vote,
+                as: 'voted_whiskey'
+              }
           ]
 
     })

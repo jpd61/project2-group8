@@ -5,6 +5,7 @@ async function newWhiskeyHandler(event) {
     const bottle_size = document.querySelector('#size').value.trim();
     const price_paid = document.querySelector('#retail-price').value.trim();
     const resell_value = document.querySelector('#resale-price').value.trim();
+
   
     const response = await fetch(`/api/whiskey`, {
       method: 'POST',

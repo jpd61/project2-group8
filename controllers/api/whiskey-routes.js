@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Whiskey, Comment } = require('../../models');
+const { User, Whiskey, Comment, Vote } = require('../../models');
 // (Is there a lodash helper to replace withAuth?)
 const withAuth = require('../../utils/auth');
 
@@ -13,7 +13,9 @@ router.get('/', (req, res) => {
             'bottle_size',
             'price_paid',
             'resell_value',
-            'resell_url'
+            'resell_url',
+            'user_id',
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
           ],
           include: [
             {
@@ -21,12 +23,12 @@ router.get('/', (req, res) => {
               attributes: ['id', 'comment_text', 'whiskey_id', 'user_id', 'created_at'],
               include: {
                 model: User,
-                attributes: ['username', 'twitter']
+                attributes: ['username']
               }
             },
             {
               model: User,
-              attributes: ['username', 'twitter']
+              attributes: ['username']
             },
           ]
     })
@@ -50,7 +52,9 @@ router.get('/:id', (req, res) => {
             'bottle_size',
             'price_paid',
             'resell_value',
-            'resell_url'
+            'resell_url',
+            'user_id',
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
           ],
         include: [
             {
@@ -101,6 +105,19 @@ router.post('/', (req, res) => {
       });
     });
 });
+
+router.put('/upvote', withAuth, (req, res) => {
+    // make sure the session exists first
+    if (req.session) {
+      // pass session id along with all destructured properties on req.body
+      Whiskey.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
+        .then(updatedVoteData => res.json(updatedVoteData))
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+    }
+  });
 
 // PUT /api/users/1
 router.put('/:id', withAuth, (req, res) => {

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Whiskey, User, Comment } = require('../models');
+const { Whiskey, User, Vote, Comment } = require('../models');
 
 router.get('/', (req, res) => {
     console.log(req.session);
@@ -107,7 +107,9 @@ router.get('/login', (req, res) => {
           'bottle_size',
           'price_paid',
           'resell_value',
-          'resell_url'
+          'resell_url',
+          'user_id',
+          [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
         ],
         include: [
           {
@@ -146,7 +148,9 @@ router.get('/login', (req, res) => {
           'bottle_size',
           'price_paid',
           'resell_value',
-          'resell_url'
+          'resell_url',
+          'user_id',
+          [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
         ],
         include: [
           {
@@ -188,7 +192,9 @@ router.get('/login', (req, res) => {
         'bottle_size',
         'price_paid',
         'resell_value',
-        'resell_url'
+        'resell_url',
+        'user_id',
+        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
       ],
       include: [
         {
