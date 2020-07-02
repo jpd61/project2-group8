@@ -19,7 +19,7 @@
                         <div class="modal-body">
 
 
-                            <!-- Form goes here -->
+        <!-- Form goes here -->
         <form class="new-whiskey">
         <div>
             <label for="whiskey">Choose your whiskey from the list:</label>
@@ -87,8 +87,8 @@
                     </div>
                     </div>
                 </div>
-                <!-- Sort Button -->
-                <div class="dropdown">
+                <!-- Sort Button Future Development-->
+                {{!-- <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Sort
                     </button>
@@ -97,7 +97,9 @@
                         <a class="dropdown-item" href="#">Rating: Highest to Lowest</a>
                         <a class="dropdown-item" href="#">Rating: Lowest to Highest</a>
                     </div>
-                </div>
+                </div> --}}
+            <button class="btn btn-danger rounded">Delete</button>
+
             </div>
             <!-- List -->
             <ol class="container ">
@@ -107,7 +109,7 @@
             {{/each}}
             </ol>
             {{else}}
-            <h6 class="pb-4 has-text-centered is-italic">you do not currently have any whiskeys!</h6>
+            <h6 class="text-center text-light font-italic m-3">You do not currently have any whiskeys!</h6>
             {{/if}}
         </div>
     </main>

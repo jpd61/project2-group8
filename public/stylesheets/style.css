@@ -13,6 +13,11 @@ footer {
     text-decoration: none;
 }
 
+.comment-body {
+    height: 120px;
+    width: 300px
+}
+
 /* added by DeWoody */
 #whiskey-pic {
     width: 200px;
