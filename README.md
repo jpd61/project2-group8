@@ -28,20 +28,33 @@
 
 ## Description
 
-🔍 A whiskey app....
+🔍 A whiskey app made using node.js, express.js, mySQL, Sequelize ORM and handlebars.js that allows users to track their inventory of collected whiskeys and socially interact with other whiskey lovers
   
-![whiskey app](./assets/whiskey-coder.jpg)
+![whiskey app](./assets/main-screenshot.PNG)
 
 ## User Story
 
 ```
-PLACEHOLDER
+As a collector of quality whiskey, I want to track my collection, add personal observations to the catalogue, share my collection with others, and search for rare bottles to add to my collection.
 ```
 
 ## Acceptance Criteria
 
 ```
-PLACEHOLDER
+Use Node.js and Express.js to create a RESTful API.
+Use Handlebars.js as the templating engine.
+Use MySQL and the Sequelize ORM for the database.
+Have both GET and POST routes for retrieving and adding new data.
+Be deployed using Heroku (with data).
+Use at least one new library, package, or technology that we haven’t discussed.
+Have a polished UI.
+Be responsive.
+Be interactive (i.e., accept and respond to user input).
+Have a folder structure that meets the MVC paradigm.
+Include authentication (express-session and cookies).
+Protect API keys and sensitive information with environment variables.
+Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
+Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 ```
 
 ## Installation
@@ -51,7 +64,7 @@ PLACEHOLDER
 
 `npm install`
 
-Dependencies: express, express-handlebars, express-session, mysql2, sequelize, [nodemon](https://www.npmjs.com/package/nodemon), dotenv, connect-session-sequelize, bcrypt, [mocha](https://mochajs.org/), chai, [lodash](https://www.npmjs.com/package/lodash), [request](https://www.npmjs.com/package/request)
+Dependencies: express, express-handlebars, express-session, mysql2, sequelize, [nodemon](https://www.npmjs.com/package/nodemon), dotenv, connect-session-sequelize, bcrypt, [mocha](https://mochajs.org/), chai, [lodash](https://www.npmjs.com/package/lodash), [request](https://www.npmjs.com/package/request), animate.css
   
 ## Usage
 💻   
@@ -77,7 +90,7 @@ To run localhost with Nodemon:
 ## Testing
 ✏️
 
-Testing will be implemented with [Mocha](https://mochajs.org/)
+Testing will be implemented (future development) with [Mocha](https://mochajs.org/)
 
 ## Contributing
 ✉️ Contact us with any questions: 
