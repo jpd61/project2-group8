@@ -1,18 +1,21 @@
-                <li class="whiskey row justify-content-center">
+                <li class="row justify-content-center m-3">
                     <div class="col-md-9">
-                        <div class="card m-3">
+                        <div class="card shadow bg-white rounded">
                             <div class="card-header">
-                                <span class="col-3 inv-head"><a href="/whiskey/{{id}}"><i class="fas fa-glass-whiskey"></i>  {{name}}</a></span>
-                                <span class="col-1">{{vote_count}} {{format_plural "vote" vote_count}}</span>
-
+                                <div class="row">
+                                <span class="col-4 font-weight-bold"><a href="/whiskey/{{id}}"><i class="fas fa-glass-whiskey"></i>  {{name}}</a></span>
+                                <span class="col-4 font-italic"></span>
+                                <span class="col-4 text-right font-weight-bold">{{vote_count}} {{format_plural "vote" vote_count}}</span>
+                                </div>
                             </div>
                             <div class="card-body row">
                                 <img id="whiskey-pic" class="rounded" src="/images/{{name}}.jpg" alt="{{name}}">
                                 <div class="col-7">
+                                    <p>Owner: {{user.username}}</p>
                                     <p>Bottle Size: {{bottle_size}}</p>
                                     <p>Price Paid: ${{price_paid}}</p>
                                     <p>Resell Value: ${{resell_value}}</p>
-                                    <p>Notes</p>
+                                    <p>Notes: {{notes}}</p>
                                 </div>
                             </div>
                         </div>
