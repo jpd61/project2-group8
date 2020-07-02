@@ -4,12 +4,7 @@
                             <div class="card-header">
                                 <span class="col-3 inv-head"><a href="/whiskey/{{id}}"><i class="fas fa-glass-whiskey"></i>  {{name}}</a></span>
                                 <span class="col-1">{{vote_count}} {{format_plural "vote" vote_count}}</span>
-                                <!-- this button not showing -->
-                                {{#if loggedIn}}
-                                <span class="col-3">
-                                <button type="button" class="btn btn-secondary upvote-btn">upvote</button>
-                                </span>
-                                {{/if}}
+
                             </div>
                             <div class="card-body">
                                 <img id="whiskey-pic" class="rounded" src="/images/{{name}}.jpg" alt="{{name}}">
