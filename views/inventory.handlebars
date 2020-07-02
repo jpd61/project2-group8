@@ -1,4 +1,4 @@
-<main class="animate__animated animate__fadeInUp">
+<main class="">
         <div class="container">
             <div class="d-flex justify-content-around align-items-center p-3">
                 <h2 class="text-light">My Inventory</h2>
@@ -102,7 +102,7 @@
 
             </div>
             <!-- List -->
-            <ol class="container ">
+            <ol class="container animate__animated animate__fadeInUp">
             {{#if whiskeys.length}}
             {{#each whiskeys as |whiskey|}}
             {{>inventory-cards}}

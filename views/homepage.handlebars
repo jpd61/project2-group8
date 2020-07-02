@@ -2,9 +2,11 @@
         <div class="p-3">
             <h2 class="text-center text-light">Featured</h2>
             <div class="container">
-            {{#each whiskeys as |whiskey|}}   
-                {{>main-images}}
-            {{/each}}       
+            <ol class="container ">
+            {{#each whiskeys as |whiskey|}}
+            {{>browser}}
+            {{/each}}
+            </ol>    
             </div> 
             </div>
         </div>
