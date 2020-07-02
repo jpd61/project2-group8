@@ -1,4 +1,4 @@
-<h1 align="center">Whiskey Inventory 👋</h1>
+<h1 align="center">Whiskey Inventory 🍸</h1>
   
 <p align="center">
     <img src="https://img.shields.io/github/repo-size/jpd61/project2-group8" />
@@ -93,7 +93,7 @@ To run localhost with Nodemon:
 Testing will be implemented (future development) with [Mocha](https://mochajs.org/)
 
 ## Contributing
-✉️ Contact us with any questions: 
+✉️ Contact us with any questions ❓: 
 :octocat: [Andy Sanchez](https://github.com/AndySanchez726)
 :octocat: [Chris Short](https://github.com/durcoorigin)
 :octocat: [Joseph DeWoody](https://github.com/jpd61)
