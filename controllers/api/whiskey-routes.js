@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
             'resell_value',
             'resell_url',
             'user_id',
+            'notes',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
           ],
           include: [
@@ -54,6 +55,7 @@ router.get('/:id', (req, res) => {
             'resell_value',
             'resell_url',
             'user_id',
+            'notes',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
           ],
         include: [
@@ -95,7 +97,8 @@ router.post('/', (req, res) => {
       resell_value: req.body.resell_value,
       resell_url: req.body.resell_url,
       comments: req.body.comments,
-      user_id: req.session.user_id
+      user_id: req.session.user_id,
+      notes: req.body.notes
     })
     .then(dbWhiskeyData => res.json(dbWhiskeyData))
     .catch(err => {

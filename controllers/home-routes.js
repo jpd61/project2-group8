@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
         'resell_value',
         'resell_url',
         'user_id',
+        'notes',
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
       ],
       include: [
@@ -70,6 +71,7 @@ router.get('/login', (req, res) => {
             'resell_value',
             'resell_url',
             'user_id',
+            'notes',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
         ],
         include: [
@@ -111,6 +113,7 @@ router.get('/login', (req, res) => {
           'resell_value',
           'resell_url',
           'user_id',
+          'notes',
           [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
         ],
         include: [
@@ -156,6 +159,7 @@ router.get('/login', (req, res) => {
           'resell_value',
           'resell_url',
           'user_id',
+          'notes',
           [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
         ],
         include: [
@@ -200,6 +204,7 @@ router.get('/login', (req, res) => {
         'resell_value',
         'resell_url',
         'user_id',
+        'notes',
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
       ],
       include: [
