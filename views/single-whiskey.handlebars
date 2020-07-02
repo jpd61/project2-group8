@@ -1,3 +1,4 @@
+
 <div class="m-3">
 <!-- displaying articles -->
 {{> inventory-cards whiskey}}
@@ -14,8 +15,9 @@
         </div>
 
         <div class="row justify-content-center">
-          <button type="submit" class="btn-primary rounded m-3">add comment</button>
-          <button type="button" class="upvote-btn btn-primary rounded m-3" id="upvote-btn">upvote</button>
+          <button type="submit" class="btn-primary rounded m-3">Add Comment</button>
+          <button type="button" class="upvote-btn btn-primary rounded m-3" id="upvote-btn">Vote</button>
+          <button type="delete" class="btn-danger rounded m-3" id="delete-whiskey-btn">Delete Whiskey</button>
         </div>
       </form>
     </div>
@@ -30,4 +32,5 @@
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
 <script src="/javascript/upvote.js"></script>
+<script src="/javascript/delete-whiskey.js"></script>
 {{/if}}

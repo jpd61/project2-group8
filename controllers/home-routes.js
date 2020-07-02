@@ -3,8 +3,6 @@ const sequelize = require('../config/connection');
 const { Whiskey, User, Vote, Comment } = require('../models');
 
 router.get('/', (req, res) => {
-    console.log(req.session);
-    
     Whiskey.findAll({
       attributes: [
         'id',
@@ -145,6 +143,10 @@ router.get('/login', (req, res) => {
 
   router.get('/inventory', (req, res) => {
     Whiskey.findAll({
+        where: {
+            // use the ID from the session
+            user_id: req.session.user_id
+          },
         attributes: [
           'id',
           'name',
