@@ -6,8 +6,9 @@
                                 <span class="col-3 "><a href="/whiskey/{{id}}"><i class="fas fa-glass-whiskey"></i>  {{name}}</a> | {{user.username}}</span>
                                 <span class="col-1">{{vote_count}} {{format_plural "vote" vote_count}}</span>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body row">
                                 <img id="whiskey-pic" class="rounded" src="/images/{{name}}.jpg" alt="{{name}}">
+<<<<<<< HEAD
                                                                 <!-- this button not showing -->
                                 {{#if loggedIn}}
                                 <span class="col-3">
@@ -15,6 +16,14 @@
                                 </span>
                                 {{/if}}
                                 <span class="col-3">Notes</span>
+=======
+                                <div class="col-7">
+                                    <p>Bottle Size: {{bottle_size}}</p>
+                                    <p>Price Paid: ${{price_paid}}</p>
+                                    <p>Resell Value: ${{resell_value}}</p>
+                                    <p>Notes</p>
+                                </div>
+>>>>>>> b9237c3345e2ac24d36e39c0006aefc6c4e58242
                             </div>
                         </div>
                     </div>

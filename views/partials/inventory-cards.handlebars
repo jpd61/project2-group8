@@ -1,4 +1,4 @@
-                <li class="whiskey row justify-content-center m-3">
+                <li class="whiskey row justify-content-center">
                     <div class="col-md-9">
                         <div class="card">
                             <div class="card-header">
@@ -6,12 +6,14 @@
                                 <span class="col-1">{{vote_count}} {{format_plural "vote" vote_count}}</span>
 
                             </div>
-                            <div class="card-body">
+                            <div class="card-body row">
                                 <img id="whiskey-pic" class="rounded" src="/images/{{name}}.jpg" alt="{{name}}">
-                                <span class="col-3">Bottle Size: {{bottle_size}}</span>
-                                <span class="col-3">Price Paid: ${{price_paid}}</span>
-                                <span class="col-3">Resell Value: ${{resell_value}}</span>
-                                <span class="col-3">Notes</span>
+                                <div class="col-7">
+                                    <p>Bottle Size: {{bottle_size}}</p>
+                                    <p>Price Paid: ${{price_paid}}</p>
+                                    <p>Resell Value: ${{resell_value}}</p>
+                                    <p>Notes</p>
+                                </div>
                             </div>
                         </div>
                     </div>

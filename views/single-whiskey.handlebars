@@ -1,20 +1,29 @@
+<div class="m-3">
 <!-- displaying articles -->
 {{> inventory-cards whiskey}}
-
+</div>  
 <!-- displaying form and comments-->
 <!-- only display if logged in -->
 {{#if loggedIn}}
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
-  </div>
+<div class="">
+  <div class="row justify-content-center">
+    <div class="card">
+      <form class="comment-form">
+        <div class="m-3">
+          <textarea class="comment-body" name="comment-body"></textarea>
+        </div>
 
-  <div>
-    <button type="submit">add comment</button>
-    <button type="button" class="upvote-btn">upvote</button>
+        <div class="row justify-content-center">
+          <button type="submit" class="btn-primary rounded m-3">add comment</button>
+          <button type="button" class="upvote-btn btn-primary rounded m-3" id="upvote-btn">upvote</button>
+        </div>
+      </form>
+    </div>
   </div>
-</form>
+</div>
 {{/if}}
+
+
 
 {{> comments whiskey.comments}}
 
