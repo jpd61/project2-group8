@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Whiskey, Vote } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// GET /api/users 
+// Get all users
 router.get('/', (req, res) => {
     User.findAll({
         attributes: { exclude: ['password'] }
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
       });
 });
 
-// GET /api/users/1
+// Get users by ID
 router.get('/:id', (req, res) => {
     User.findOne({
         attributes: { exclude: ['password']},
@@ -24,11 +24,11 @@ router.get('/:id', (req, res) => {
         include: [
             {
               model: Whiskey,
-              attributes: ['id', 'name', 'type', 'bottle_size', 'price_paid', 'resell_value', 'resell_url']
+              attributes: ['id', 'name', 'type', 'bottle_size', 'price_paid', 'resell_value', 'resell_url', 'notes']
             },
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'created_at'],
+                attributes: ['id', 'whiskey_id', 'comment_text', 'created_at'],
                 include: {
                   model: Whiskey,
                   attributes: ['name']
@@ -56,8 +56,8 @@ router.get('/:id', (req, res) => {
       });
 });
 
-// POST /api/users
-router.post('/', (req, res) => {
+// Post Users
+router.post('/signup', (req, res) => {
     User.create({
       username: req.body.username,
       email: req.body.email,
@@ -65,9 +65,9 @@ router.post('/', (req, res) => {
     })
     .then(dbUserData => {
       req.session.save(() => {
-        req.session.user_id = dbUserData.id;
-        req.session.username = dbUserData.username;
+        req.session.id = dbUserData.id;
         req.session.email = dbUserData.email;
+        req.session.username = dbUserData.username;
         req.session.loggedIn = true;
     
         res.json(dbUserData);
@@ -75,7 +75,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// LOGIN
+// Login route
 router.post('/login', (req, res) => {
     User.findOne({
       where: {
@@ -94,9 +94,8 @@ router.post('/login', (req, res) => {
         return;
       }
       req.session.save(() => {
-        // declare session variables
+        console.log(dbUserData);
         req.session.id = dbUserData.id;
-        req.session.username = dbUserData.username;
         req.session.loggedIn = true;
   
         res.json({ user: dbUserData, message: 'You are now logged in!' });
@@ -104,7 +103,8 @@ router.post('/login', (req, res) => {
     });
   });
 
-  router.post('/logout', (req, res) => {
+// Logout route
+router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
       req.session.destroy(() => {
         res.status(204).end();
@@ -115,7 +115,7 @@ router.post('/login', (req, res) => {
     }
 });
 
-// PUT /api/users/1
+// Update users
 router.put('/:id', withAuth, (req, res) => {
     User.update(req.body, {
         individualHooks: true,
@@ -136,7 +136,7 @@ router.put('/:id', withAuth, (req, res) => {
       });
 });
 
-// DELETE /api/users/1
+// Delete users
 router.delete('/:id', withAuth, (req, res) => {
     User.destroy({
       where: {

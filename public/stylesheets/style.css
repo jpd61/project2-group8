@@ -1,13 +1,13 @@
-/* body {
-    background-color: #;
-} */
+
 header {
     text-align: center;
 }
+
 main {
     background-color: #49111C;
     padding: 0 0 15px 0;
 }
+
 footer {
     text-align: center; 
     text-decoration: none;
@@ -18,7 +18,6 @@ footer {
     width: 590px;
 }
 
-/* added by DeWoody */
 #whiskey-pic {
     width: 200px;
     height: 300px;

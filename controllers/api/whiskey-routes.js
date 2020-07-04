@@ -3,7 +3,7 @@ const { User, Whiskey, Comment, Vote } = require('../../models');
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
-// GET /api/users 
+// Get all whiskeys
 router.get('/', (req, res) => {
     Whiskey.findAll({
         attributes: [
@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
             'price_paid',
             'resell_value',
             'resell_url',
-            'user_id',
             'notes',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
           ],
@@ -40,7 +39,7 @@ router.get('/', (req, res) => {
       });
 });
 
-// GET /api/users/1
+// Get whiskey by ID
 router.get('/:id', (req, res) => {
     Whiskey.findOne({
         where: {
@@ -54,7 +53,6 @@ router.get('/:id', (req, res) => {
             'price_paid',
             'resell_value',
             'resell_url',
-            'user_id',
             'notes',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
           ],
@@ -65,7 +63,7 @@ router.get('/:id', (req, res) => {
               },
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'created_at'],
+                attributes: ['id', 'comment_text', 'whiskey_id', 'user_id', 'created_at'],
                 include: {
                   model: User,
                   attributes: ['username']
@@ -87,7 +85,7 @@ router.get('/:id', (req, res) => {
       });
 });
 
-// POST /api/whiskey
+// Post Whiskey
 router.post('/', (req, res) => {
     Whiskey.create({
       name: req.body.name,
@@ -107,10 +105,9 @@ router.post('/', (req, res) => {
       });
     });
 
+//Whiskey voting route
 router.put('/upvote', withAuth, (req, res) => {
-    // make sure the session exists first
     if (req.session) {
-      // pass session id along with all destructured properties on req.body
       Whiskey.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
         .then(updatedVoteData => res.json(updatedVoteData))
         .catch(err => {
@@ -120,7 +117,7 @@ router.put('/upvote', withAuth, (req, res) => {
     }
   });
 
-// PUT /api/users/1
+// Update Whiskeys
 router.put('/:id', withAuth, (req, res) => {
     Whiskey.update(req.body, {
         individualHooks: true,
@@ -141,7 +138,7 @@ router.put('/:id', withAuth, (req, res) => {
       });
 });
 
-// DELETE /api/users/1
+// Delete Whiskeys
 router.delete('/:id', withAuth, (req, res) => {
     Whiskey.destroy({
       where: {

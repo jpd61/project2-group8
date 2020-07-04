@@ -1,3 +1,5 @@
+// Mocha tests - for future development
+
 // Starter test from mochajs.org
 var assert = require('assert');
 describe('Array', function () {
@@ -17,9 +19,3 @@ describe('Math', function() {
     });
 });
 
-var ass = require('chai').assert;
-var numbers = [1, 2, 3, 4, 5];
-
-ass.isArray(numbers, 'is array of numbers');
-ass.include(numbers, 2, 'array contains 2');
-ass.lengthOf(numbers, 5, 'array contains 5 numbers');
