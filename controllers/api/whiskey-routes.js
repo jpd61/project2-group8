@@ -9,11 +9,9 @@ router.get('/', (req, res) => {
         attributes: [
             'id',
             'name',
-            'type',
             'bottle_size',
             'price_paid',
             'resell_value',
-            'resell_url',
             'notes',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
           ],
@@ -48,11 +46,9 @@ router.get('/:id', (req, res) => {
         attributes: [
             'id',
             'name',
-            'type',
             'bottle_size',
             'price_paid',
             'resell_value',
-            'resell_url',
             'notes',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
           ],
@@ -86,17 +82,14 @@ router.get('/:id', (req, res) => {
 });
 
 // Post Whiskey
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     Whiskey.create({
       name: req.body.name,
-      type: req.body.type,
       bottle_size: req.body.bottle_size,
       price_paid: req.body.price_paid,
       resell_value: req.body.resell_value,
-      resell_url: req.body.resell_url,
-      comments: req.body.comments,
-      user_id: req.session.user_id,
-      notes: req.body.notes
+      notes: req.body.notes,
+      user_id: req.session.user_id
     })
     .then(dbWhiskeyData => res.json(dbWhiskeyData))
     .catch(err => {
@@ -118,25 +111,25 @@ router.put('/upvote', withAuth, (req, res) => {
   });
 
 // Update Whiskeys
-router.put('/:id', withAuth, (req, res) => {
-    Whiskey.update(req.body, {
-        individualHooks: true,
-        where: {
-            id: req.params.id
-      }
-    })
-      .then(dbWhiskeyData => {
-        if (!dbWhiskeyData[0]) {
-          res.status(404).json({ message: 'No Whiskey found with this id' });
-          return;
-        }
-        res.json(dbWhiskeyData);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-});
+// router.put('/:id', withAuth, (req, res) => {
+//     Whiskey.update(req.body, {
+//         individualHooks: true,
+//         where: {
+//             id: req.params.id
+//       }
+//     })
+//       .then(dbWhiskeyData => {
+//         if (!dbWhiskeyData[0]) {
+//           res.status(404).json({ message: 'No Whiskey found with this id' });
+//           return;
+//         }
+//         res.json(dbWhiskeyData);
+//       })
+//       .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//       });
+// });
 
 // Delete Whiskeys
 router.delete('/:id', withAuth, (req, res) => {

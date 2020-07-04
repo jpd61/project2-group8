@@ -8,11 +8,9 @@ router.get('/', (req, res) => {
       attributes: [
         'id',
         'name',
-        'type',
         'bottle_size',
         'price_paid',
         'resell_value',
-        'resell_url',
         'notes',
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
       ],
@@ -63,46 +61,45 @@ router.get('/login', (req, res) => {
   // });
 
 // Get all Whiskeys for /whiskey extension 
-  router.get('/whiskey', (req, res) => {
-    Whiskey.findAll({
-        attributes: [
-            'id',
-            'name',
-            'type',
-            'bottle_size',
-            'price_paid',
-            'resell_value',
-            'resell_url',
-            'notes',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
-        ],
-        include: [
-          {
-            model: Comment,
-            attributes: ['id', 'comment_text', 'whiskey_id', 'user_id', 'created_at'],
-            include: {
-              model: User,
-              attributes: ['username']
-            }
-          },
-          {
-            model: User,
-            attributes: ['username']
-          }
-        ]
-      })
-        .then(dbWhiskeyData => {
-          const whiskeys = dbWhiskeyData.map(whiskey => whiskey.get({ plain: true }));
-          res.render('whiskey', {
-              whiskeys,
-              loggedIn: req.session.loggedIn
-            });
-        })
-        .catch(err => {
-          console.log(err);
-          res.status(500).json(err);
-        });
-  });
+  // router.get('/whiskey', (req, res) => {
+  //   Whiskey.findAll({
+  //       attributes: [
+  //           'id',
+  //           'name',
+  //           'bottle_size',
+  //           'price_paid',
+  //           'resell_value',
+  //           'user_id',
+  //           'notes',
+  //           [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
+  //       ],
+  //       include: [
+  //         {
+  //           model: Comment,
+  //           attributes: ['id', 'comment_text', 'whiskey_id', 'user_id', 'created_at'],
+  //           include: {
+  //             model: User,
+  //             attributes: ['username']
+  //           }
+  //         },
+  //         {
+  //           model: User,
+  //           attributes: ['username']
+  //         }
+  //       ]
+  //     })
+  //       .then(dbWhiskeyData => {
+  //         const whiskeys = dbWhiskeyData.map(whiskey => whiskey.get({ plain: true }));
+  //         res.render('whiskey', {
+  //             whiskeys,
+  //             loggedIn: req.session.loggedIn
+  //           });
+  //       })
+  //       .catch(err => {
+  //         console.log(err);
+  //         res.status(500).json(err);
+  //       });
+  // });
 
 // Get all Whiskeys for /browse (for future development)
   // router.get('/browse', (req, res) => {
@@ -110,11 +107,9 @@ router.get('/login', (req, res) => {
   //       attributes: [
   //         'id',
   //         'name',
-  //         'type',
   //         'bottle_size',
   //         'price_paid',
   //         'resell_value',
-  //         'resell_url',
   //         'user_id',
   //         'notes',
   //         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
@@ -147,51 +142,6 @@ router.get('/login', (req, res) => {
   //       });
   // });
 
-// Get all Whiskeys for /inventory
-  router.get('/inventory', (req, res) => {
-    console.log(req.session);
-    Whiskey.findAll({
-        where: {
-          user_id: req.session.user_id
-          },
-        attributes: [
-          'id',
-          'name',
-          'type',
-          'bottle_size',
-          'price_paid',
-          'resell_value',
-          'resell_url',
-          'notes',
-          [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
-        ],
-        include: [
-          {
-            model: Comment,
-            attributes: ['id', 'comment_text', 'whiskey_id', 'created_at'],
-            include: {
-              model: User,
-              attributes: ['username']
-            }
-          },
-          {
-            model: User,
-            attributes: ['username']
-          }
-        ]
-      })
-        .then(dbWhiskeyData => {
-          const whiskeys = dbWhiskeyData.map(whiskey => whiskey.get({ plain: true }));
-          res.render('inventory', {
-              whiskeys,
-              loggedIn: req.session.loggedIn
-            });
-        })
-        .catch(err => {
-          console.log(err);
-          res.status(500).json(err);
-        });
-  });
 
 // Get whiskey by ID
 router.get('/whiskey/:id', (req, res) => {
@@ -202,11 +152,9 @@ router.get('/whiskey/:id', (req, res) => {
       attributes: [
         'id',
         'name',
-        'type',
         'bottle_size',
         'price_paid',
         'resell_value',
-        'resell_url',
         'notes',
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
       ],

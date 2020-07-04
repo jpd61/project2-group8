@@ -16,11 +16,9 @@ class Whiskey extends Model {
             attributes: [
                 'id',
                 'name',
-                'type',
                 'bottle_size',
                 'price_paid',
                 'resell_value',
-                'resell_url',
                 'user_id',
                 [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE whiskey.id = vote.whiskey_id)'), 'vote_count']
             ]
@@ -43,11 +41,6 @@ Whiskey.init(
         type: DataTypes.STRING,
         allowNull: false
       },
-      // should we have pre-selections of Bourbon, Rye, Scotch etc?
-      type: {
-        type: DataTypes.TEXT,
-        allowNull: true
-      },
       bottle_size: {
           type: DataTypes.TEXT,
           allowNull: truncate
@@ -59,10 +52,6 @@ Whiskey.init(
       resell_value: {
           type: DataTypes.FLOAT,
           alllowNull: true
-      },
-      resell_url: {
-          type: DataTypes.TEXT,
-          allowNull: true
       },
       notes: {
           type: DataTypes.TEXT,

@@ -1,6 +1,6 @@
 const User = require('./User');
 const Whiskey = require('./Whiskey');
-const Comment = require('./Comment.js');
+const Comment = require('./Comment');
 const Vote = require('./Vote');
 
 User.hasMany(Whiskey, {

@@ -24,11 +24,11 @@ router.get('/:id', (req, res) => {
         include: [
             {
               model: Whiskey,
-              attributes: ['id', 'name', 'type', 'bottle_size', 'price_paid', 'resell_value', 'resell_url', 'notes']
+              attributes: ['id', 'name', 'bottle_size', 'price_paid', 'resell_value', 'user_id', 'notes']
             },
             {
                 model: Comment,
-                attributes: ['id', 'whiskey_id', 'comment_text', 'created_at'],
+                attributes: ['id', 'whiskey_id', 'comment_text', 'user_id', 'created_at'],
                 include: {
                   model: Whiskey,
                   attributes: ['name']
@@ -65,9 +65,8 @@ router.post('/signup', (req, res) => {
     })
     .then(dbUserData => {
       req.session.save(() => {
-        req.session.id = dbUserData.id;
+        req.session.user_id = dbUserData.id;
         req.session.email = dbUserData.email;
-        req.session.username = dbUserData.username;
         req.session.loggedIn = true;
     
         res.json(dbUserData);
@@ -94,10 +93,10 @@ router.post('/login', (req, res) => {
         return;
       }
       req.session.save(() => {
-        console.log(dbUserData);
-        req.session.id = dbUserData.id;
+        req.session.user_id = dbUserData.id;
+        req.session.email = dbUserData.email;
         req.session.loggedIn = true;
-  
+
         res.json({ user: dbUserData, message: 'You are now logged in!' });
       });
     });
